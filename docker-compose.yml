@@ -11,7 +11,7 @@ services:
       - RAILWAY_ENVIRONMENT=production
     restart: always
     healthcheck:
-      test: ["CMD", "pg_isready", "-h", "gondola.proxy.rlwy.net", "-p", "25045", "-U", "postgres"]
+      test: ["CMD-SHELL", "pg_isready -h gondola.proxy.rlwy.net -p 25045 -U postgres -d railway"]
       interval: 10s
       timeout: 5s
       retries: 5
