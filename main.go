@@ -29,6 +29,7 @@ func main() {
 	log.Printf("DB_HOST: %s", os.Getenv("DB_HOST"))
 	log.Printf("DB_PORT: %s", os.Getenv("DB_PORT"))
 	log.Printf("DB_NAME: %s", os.Getenv("DB_NAME"))
+	log.Printf("DATABASE_URL set: %v", os.Getenv("DATABASE_URL") != "")
 	log.Printf("PORT: %s", os.Getenv("PORT"))
 
 	r := gin.Default()
