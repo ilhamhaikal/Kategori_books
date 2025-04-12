@@ -7,24 +7,14 @@ services:
       - "8080:8080"
     environment:
       - DATABASE_URL=postgresql://postgres:XBkGexHLYzrmnsSALzHRYBKCMkQOvfzD@gondola.proxy.rlwy.net:25045/railway
-      - DB_HOST=gondola.proxy.rlwy.net
-      - DB_PORT=25045
-      - DB_USER=postgres
-      - DB_PASSWORD=XBkGexHLYzrmnsSALzHRYBKCMkQOvfzD
-      - DB_NAME=railway
       - JWT_SECRET=your_jwt_secret_key
       - RAILWAY_ENVIRONMENT=production
     restart: always
-    networks:
-      - app-network
     healthcheck:
       test: ["CMD", "pg_isready", "-h", "gondola.proxy.rlwy.net", "-p", "25045", "-U", "postgres"]
       interval: 10s
       timeout: 5s
       retries: 5
-
-volumes:
-  postgres_data:
 
 networks:
   app-network:

@@ -12,22 +12,20 @@ import (
 var DB *sql.DB
 
 func ConnectDB() error {
-	// Get database URL from environment
+	// Get DATABASE_URL from environment variable, fallback to Railway URL if not present
 	dbURL := os.Getenv("DATABASE_URL")
 	if dbURL == "" {
-		return fmt.Errorf("DATABASE_URL is not set")
+		dbURL = "postgresql://postgres:XBkGexHLYzrmnsSALzHRYBKCMkQOvfzD@gondola.proxy.rlwy.net:25045/railway"
 	}
 
-	// Try to connect to database
 	var err error
 	DB, err = sql.Open("postgres", dbURL)
 	if err != nil {
-		return fmt.Errorf("failed to open database connection: %v", err)
+		return fmt.Errorf("failed to connect to database: %v", err)
 	}
 
 	// Test the connection
-	err = DB.Ping()
-	if err != nil {
+	if err = DB.Ping(); err != nil {
 		return fmt.Errorf("failed to ping database: %v", err)
 	}
 
