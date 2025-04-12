@@ -1,7 +1,5 @@
-# Use official Go image as base
 FROM golang:1.24.1-alpine
 
-# Set working directory
 WORKDIR /app
 
 # Install required system dependencies

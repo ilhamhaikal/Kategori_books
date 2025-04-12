@@ -8,9 +8,10 @@ services:
     environment:
       - DATABASE_URL=postgresql://postgres:XBkGexHLYzrmnsSALzHRYBKCMkQOvfzD@gondola.proxy.rlwy.net:25045/railway
       - JWT_SECRET=your_jwt_secret_key
+      - RAILWAY_ENVIRONMENT=production
+    restart: always
     networks:
       - app-network
-    restart: always
 
 volumes:
   postgres_data:
